@@ -20,33 +20,10 @@
         <area shape="rect" coords="411,485,660,750" href="https://t.me/+6ku3ccid8U0xM2Fi">
         <area shape="rect" coords="420,1510,675,1765" href="https://docs.google.com/forms/d/1jnZcVDQsAnNjOrMtPRnfhm6D7KlWsCD0o3PYejGxuMc/edit">
       </map>
-      <script>
-function resizeMap() {
-    const img = document.querySelector('img[usemap="#my-map"]');
-    const map = document.querySelector('map[name="my-map"]');
-    const areas = map.querySelectorAll('area');
-
-    const w = img.naturalWidth;
-    const h = img.naturalHeight;
-    const wPercent = img.offsetWidth / w;
-    const hPercent = img.offsetHeight / h;
-
-    areas.forEach(area => {
-        if (!area.dataset.coords) {
-            area.dataset.coords = area.coords; // запоминаем оригинал при первой загрузке
-        }
-        let coords = area.dataset.coords.split(',').map(Number);
-        for (let i = 0; i < coords.length; i += 2) {
-            coords[i] *= wPercent;
-            coords[i + 1] *= hPercent;
-        }
-        area.coords = coords.map(c => Math.round(c)).join(',');
-    });
-}
-
-window.addEventListener('resize', resizeMap);
-window.addEventListener('load', resizeMap);
-</script>
+      <script src="https://unpkg.com/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+    <script>
+      imageMapResize(); 
+    </script>
       <img  src="image/IMG_5.PNG" alt="Жених и невеста">
       </div>
   </body>
